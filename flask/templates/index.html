@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled Team Healthcare Risk Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/index.css') }}">
+    
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="index.html">Health Insurance Risk Calculator</a>
+      </div>
+    <div class="title-container">
+        <div class="title-header">
+            <h1><br>Team [Untitled] Health Insurance Risk Calculator</h1>
+        </div>
+    </div>
+    <h2>Jocelyn Murray &diams;&nbsp; Kyle Brick &diams;&nbsp; Luke Freeman &diams;&nbsp; Cortez Banks</h2>
+    <p>&nbsp;</p>
+    <h3>Risk Calculator</h3>
+    <p>This program helps you classify health insurance
+        based on their risk level. That is determined
+        by their health. Their health is judged in terms
+        of their body-mass index, blood pressure, age,
+        and family history of disease.</p>
+
+    <form action="{{ url_for('server_app') }}" id="risk-form", method='POST'>
+        AGE: <input type='number' name='age' value="{{age}}"><br>
+        WEIGHT IN POUNDS: <input name='weight' type='number' value="{{weight}}"> <br>
+        HEIGHT IN INCHES: <input name='height' type='number' value="{{height}}"> <br>
+        SYSTOLIC BP: <input type='number' name='sys_bp' value="{{sys_bp}}"> <br>
+        DIASTOLIC BP: <input type='number' name='dia_bp' value="{{dia_bp}}"> <br>
+        HISTORY OF DIABETES: (y/n): <input type='text' name='diabetes' value="{{diabetes}}"> <br>
+        HISTORY OF CANCER: (y/n): <input type='text' name='cancer' value="{{cancer}}"> <br>
+        HISTORY OF ALZHEIMERS: (y/n): <input type='text' name='alz' value="{{alz}}"> <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <p>Your status is {{status}}</p>
+
+</body>
