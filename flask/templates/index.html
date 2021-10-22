@@ -13,7 +13,7 @@
 
 <body>
     <div class="navbar">
-        <a href="index.html">Health Insurance Risk Calculator</a>
+        <a href="/">Health Insurance Risk Calculator</a>
       </div>
     <div class="title-container">
         <div class="title-header">
@@ -30,17 +30,19 @@
         and family history of disease.</p>
 
     <form action="{{ url_for('server_app') }}" id="risk-form", method='POST'>
-        AGE: <input type='number' name='age' value="{{age}}"><br>
-        WEIGHT IN POUNDS: <input name='weight' type='number' value="{{weight}}"> <br>
-        HEIGHT IN INCHES: <input name='height' type='number' value="{{height}}"> <br>
-        SYSTOLIC BP: <input type='number' name='sys_bp' value="{{sys_bp}}"> <br>
-        DIASTOLIC BP: <input type='number' name='dia_bp' value="{{dia_bp}}"> <br>
-        HISTORY OF DIABETES: (y/n): <input type='text' name='diabetes' value="{{diabetes}}"> <br>
-        HISTORY OF CANCER: (y/n): <input type='text' name='cancer' value="{{cancer}}"> <br>
-        HISTORY OF ALZHEIMERS: (y/n): <input type='text' name='alz' value="{{alz}}"> <br>
+        <p>Please enter age in years: <input type='number' name='age' value="{{age}}"><br></p>
+        <p>Please enter weight in pounds: <input name='weight' type='number' value="{{weight}}"> <br></p>
+        <p>Please enter your height in inches: <input name='height' type='number' value="{{height}}"> <br></p>
+        <p>Please enter your systolic blood pressure: <input type='number' name='sys_bp' value="{{sys_bp}}"> <br></p>
+        <p>Please enter your diastolic blood pressure:<input type='number' name='dia_bp' value="{{dia_bp}}"> <br></p>
+        <p>&nbsp;</p>
+        <p>Does the person have a family history of...</p>
+        <p>Diabetes (y/n): <input type='text' name='diabetes' value="{{diabetes}}"> <br></p>
+        <p>Cancer (y/n): (y/n): <input type='text' name='cancer' value="{{cancer}}"> <br></p>
+        <p>Alzheimers: (y/n): <input type='text' name='alz' value="{{alz}}"> <br></p>
         <input type="submit" value="Submit">
     </form>
 
-    <p>Your status is {{status}}</p>
+    <p>Based on information provided, coverage status is: {{status}}</p>
 
 </body>
