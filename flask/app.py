@@ -38,21 +38,44 @@ def server_app():
     cancer = request.form.get("cancer")
     alz = request.form.get("alz")
 
-    # Find all scores.
-    if (age is not None) and (height is not None) and (weight is not None) and (sys_bp is not None) and (dia_bp is not None) and (diabetes == "y" or diabetes == "n") and (cancer == "y" == cancer == "n") and (alz == "y" or alz == "n"):
-        age_score = c.find_age_score(float(age))
-        bmi_score = c.find_bmi(float(height), float(weight))
-        bp_score = c.find_bp_score(float(sys_bp), float(dia_bp))
-        history_score = c.find_disease_score(diabetes, cancer, alz)
-        overall_score = age_score + bmi_score + bp_score + history_score
+    age_flag = False
+    bmi_flag = False
+    bp_flag = False
+    history_flag = False
 
-        # Calculate Risk and return.
-        try:
-            insurance_status = c.find_risk(int(overall_score))
-            print(f"According to your score you are {insurance_status}")
-        except:
-            insurance_status = "ERROR, PLEASE USE VALID STATS IN THE CALCULATOR AND TRY AGAIN."
-        
+    # Find age score.
+    if (age is not None) and (float(age) < 120) and (float(age) > 0):
+        age_score = c.find_age_score(float(age))
+    else:
+        age_score = "ERROR: PLEASE PROVIDE A VALID AGE"
+        age_flag = True
+    
+    # Find bmi score.
+    if (height is not None) and (weight is not None) and (float(height) < 110) and (float(height) > 24) and (float(weight) < 1000) and (float(weight) > 50):
+        bmi_score = c.find_bmi(float(height), float(weight))
+    else:
+        bmi_score = "ERROR: PLEASE PROVIDE A VALID HEIGHT AND WEIGHT"
+        bmi_flag = True
+    
+    # Find bp score.
+    if (sys_bp is not None) and (dia_bp is not None) and (float(sys_bp) < 210) and (float(sys_bp) > 80) and (float(dia_bp) < 150) and (float(weight) > 50):
+        bp_score = c.find_bp_score(float(sys_bp), float(dia_bp))
+    else:
+        bp_score = "ERROR: PLEASE PROVIDE VALID BLOOD PRESSURE SCORES"
+        bp_flag = True
+
+    # Find all scores.
+    if (diabetes == "y" or diabetes == "n") and (cancer == "y" or cancer == "n") and (alz == "y" or alz == "n"):
+        history_score = c.find_disease_score(diabetes, cancer, alz)
+    else:
+        history_score = "ERROR: PLEASE PROVIDE A VALID ANSWER TO HEALTH HISTORY QUESTIONS"
+        history_flag = True 
+
+    # Find overall score
+    if (age_flag is not True) and (bmi_flag is not True) and (bp_flag is not True) and (history_flag is not True):
+        overall_score = age_score + bmi_score + bp_score + history_score   
+        insurance_status = c.find_risk(int(overall_score))
+        print(f"According to your score you are {insurance_status}")
     else:
         insurance_status = "ERROR, PLEASE USE VALID STATS IN THE CALCULATOR AND TRY AGAIN."
 
@@ -65,6 +88,10 @@ def server_app():
                            diabetes=diabetes,
                            cancer=cancer,
                            alz=alz,
+                           age_score = age_score,
+                           bmi_score = bmi_score,
+                           bp_score = bp_score,
+                           history_score = history_score,
                            status=insurance_status)
     
 if __name__ == '__main__':

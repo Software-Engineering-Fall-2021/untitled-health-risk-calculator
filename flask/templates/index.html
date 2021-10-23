@@ -38,11 +38,15 @@
         <p>&nbsp;</p>
         <p>Does the person have a family history of...</p>
         <p>Diabetes (y/n): <input type='text' name='diabetes' value="{{diabetes}}" maxlength="1"> <br></p>
-        <p>Cancer (y/n): (y/n): <input type='text' name='cancer' value="{{cancer}}" maxlength="1"> <br></p>
+        <p>Cancer (y/n): <input type='text' name='cancer' value="{{cancer}}" maxlength="1"> <br></p>
         <p>Alzheimers: (y/n): <input type='text' name='alz' value="{{alz}}" maxlength="1"> <br></p>
         <input type="submit" value="Submit">
     </form>
 
+    <p>Age Risk Score: {{age_score}}</p>
+    <p>BMI Risk Score: {{bmi_score}}</p>
+    <p>BP Risk Score: {{bp_score}}</p>
+    <p>History Risk Score: {{history_score}}</p>
     <p>Based on information provided, coverage status is: {{status}}</p>
 
 </body>
