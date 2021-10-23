@@ -30,16 +30,16 @@
         and family history of disease.</p>
 
     <form action="{{ url_for('server_app') }}" id="risk-form", method='POST'>
-        <p>Please enter age in years: <input type='number' name='age' value="{{age}}"><br></p>
-        <p>Please enter weight in pounds: <input name='weight' type='number' value="{{weight}}"> <br></p>
-        <p>Please enter your height in inches: <input name='height' type='number' value="{{height}}"> <br></p>
-        <p>Please enter your systolic blood pressure: <input type='number' name='sys_bp' value="{{sys_bp}}"> <br></p>
-        <p>Please enter your diastolic blood pressure:<input type='number' name='dia_bp' value="{{dia_bp}}"> <br></p>
+        <p>Please enter age in years: <input type='number' name='age' value="{{age}}" min="0" max="120"><br></p>
+        <p>Please enter weight in pounds: <input name='weight' type='number' value="{{weight}}" min="10" max="1500"> <br></p>
+        <p>Please enter your height in inches: <input name='height' type='number' value="{{height}}" min="10" max="120" > <br></p>
+        <p>Please enter your systolic blood pressure: <input type='number' name='sys_bp' value="{{sys_bp}}" min="0" max="500"> <br></p>
+        <p>Please enter your diastolic blood pressure:<input type='number' name='dia_bp' value="{{dia_bp}}" min="0" max="500"> <br></p>
         <p>&nbsp;</p>
         <p>Does the person have a family history of...</p>
-        <p>Diabetes (y/n): <input type='text' name='diabetes' value="{{diabetes}}"> <br></p>
-        <p>Cancer (y/n): (y/n): <input type='text' name='cancer' value="{{cancer}}"> <br></p>
-        <p>Alzheimers: (y/n): <input type='text' name='alz' value="{{alz}}"> <br></p>
+        <p>Diabetes (y/n): <input type='text' name='diabetes' value="{{diabetes}}" maxlength="1"> <br></p>
+        <p>Cancer (y/n): (y/n): <input type='text' name='cancer' value="{{cancer}}" maxlength="1"> <br></p>
+        <p>Alzheimers: (y/n): <input type='text' name='alz' value="{{alz}}" maxlength="1"> <br></p>
         <input type="submit" value="Submit">
     </form>
 
