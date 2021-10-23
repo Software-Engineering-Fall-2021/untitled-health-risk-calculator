@@ -39,7 +39,7 @@ def server_app():
     alz = request.form.get("alz")
 
     # Find all scores.
-    if (age is not None) and (height is not None) and (weight is not None) and (sys_bp is not None) and (dia_bp is not None) and (diabetes is "y" or diabetes is "n") and (cancer is "y" or cancer is "n") and (alz is "y" or alz is "n"):
+    if (age is not None) and (height is not None) and (weight is not None) and (sys_bp is not None) and (dia_bp is not None) and (diabetes == "y" or diabetes == "n") and (cancer == "y" == cancer == "n") and (alz == "y" or alz == "n"):
         age_score = c.find_age_score(float(age))
         bmi_score = c.find_bmi(float(height), float(weight))
         bp_score = c.find_bp_score(float(sys_bp), float(dia_bp))
