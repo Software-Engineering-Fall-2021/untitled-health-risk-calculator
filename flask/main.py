@@ -1,3 +1,4 @@
+from flask import Flask, request, render_template
 import webbrowser
 import _calc as c
 
@@ -5,8 +6,6 @@ import _calc as c
 # Team Untitled
 # Description: Handles Flask routing and the web application
 # Version 1
-
-from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
